@@ -118,6 +118,7 @@ void cariEditHapus() {
     string cari;
     string ulang;
     do {
+        system("cls");
 		cout << "\nCari Nama atau No HP (Case Sensitive) : "; getline(cin >> ws, cari);
 		int indexKetemu = -1;
 
@@ -157,7 +158,7 @@ void cariEditHapus() {
 			}
 		} else {
 			cout << "\n[ DATA TIDAK DITEMUKAN ]\n\n";
-			cout << "ulang(y/n) : " ; cin >> ulang;
+			cout << "ulang (y/n) : " ; cin >> ulang;
 		}
 	} while (ulang == "y");
 }
@@ -199,7 +200,6 @@ int main() {
                 system("pause");
                 break;
             case 3:
-                system("cls");
                 cariEditHapus();
                 system("pause");
                 break;
