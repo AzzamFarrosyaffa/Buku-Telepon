@@ -116,46 +116,50 @@ void tampilkanTabel(int filterKategori = 0) {
 
 void cariEditHapus() {
     string cari;
-    cout << "\nCari Nama atau No HP (Case Sensitive) : "; getline(cin >> ws, cari);
-    int indexKetemu = -1;
+    string ulang;
+    do {
+		cout << "\nCari Nama atau No HP (Case Sensitive) : "; getline(cin >> ws, cari);
+		int indexKetemu = -1;
 
-    for (int i = 0; i < jumlahKontak; i++) {
-        if (daftarKontak[i].nama == cari || daftarKontak[i].noTelepon == cari) {
-            indexKetemu = i;
-            break;
-        }
-    }
+		for (int i = 0; i < jumlahKontak; i++) {
+			if (daftarKontak[i].nama == cari || daftarKontak[i].noTelepon == cari) {
+				indexKetemu = i;
+				break;
+			}
+		}
 
-    if (indexKetemu != -1) {
-        // pointer struct yang menunjuk ke kontak yang ditemukan
-        Kontak* pointerEdit = &daftarKontak[indexKetemu];
+		if (indexKetemu != -1) {
+			// pointer struct yang menunjuk ke kontak yang ditemukan
+			Kontak* pointerEdit = &daftarKontak[indexKetemu];
 
-        cout << "\n[ DATA DITEMUKAN ]\n";
-        // operator arrow (->) untuk mengakses member struct via pointer
-        cout << "Nama     : " << pointerEdit->nama << endl;
-        cout << "No HP    : " << pointerEdit->noTelepon << endl;
-        cout << "Kategori : " << getNamaKategori(pointerEdit->kategori) << endl;
+			cout << "\n[ DATA DITEMUKAN ]\n";
+			// operator arrow (->) untuk mengakses member struct via pointer
+			cout << "Nama     : " << pointerEdit->nama << endl;
+			cout << "No HP    : " << pointerEdit->noTelepon << endl;
+			cout << "Kategori : " << getNamaKategori(pointerEdit->kategori) << endl;
 
-        cout << "\n1. Edit | 2. Hapus | 3. Kembali: ";
-        int action; cin >> action;
+			cout << "\n1. Edit | 2. Hapus | 3. Kembali: ";
+			int action; cin >> action;
 
-        if (action == 1) {
-            cout << "Nama Baru   : "; getline(cin >> ws, pointerEdit->nama);
-            cout << "No HP Baru  : "; cin >> pointerEdit->noTelepon;
-            cout << "Kategori Baru (1:Keluarga, 2:Saudara, 3:Teman, 4:Tetangga) : "; cin >> pointerEdit->kategori;
-            storeDatabase();
-            cout << "\n>> Data diperbarui!\n";
-        } else if (action == 2) {
-            for (int i = indexKetemu; i < jumlahKontak - 1; i++) {
-                daftarKontak[i] = daftarKontak[i+1];
-            }
-            jumlahKontak--;
-            storeDatabase();
-            cout << "\n>> Data dihapus!\n";
-        }
-    } else {
-        cout << "\n[ DATA TIDAK DITEMUKAN ]\n\n";
-    }
+			if (action == 1) {
+				cout << "Nama Baru   : "; getline(cin >> ws, pointerEdit->nama);
+				cout << "No HP Baru  : "; cin >> pointerEdit->noTelepon;
+				cout << "Kategori Baru (1:Keluarga, 2:Saudara, 3:Teman, 4:Tetangga) : "; cin >> pointerEdit->kategori;
+				storeDatabase();
+				cout << "\n>> Data diperbarui!\n";
+			} else if (action == 2) {
+				for (int i = indexKetemu; i < jumlahKontak - 1; i++) {
+					daftarKontak[i] = daftarKontak[i+1];
+				}
+				jumlahKontak--;
+				storeDatabase();
+				cout << "\n>> Data dihapus!\n";
+			}
+		} else {
+			cout << "\n[ DATA TIDAK DITEMUKAN ]\n\n";
+			cout << "ulang(y/n) : " ; cin >> ulang;
+		}
+	} while (ulang == "y");
 }
 
 int main() {
@@ -165,12 +169,12 @@ int main() {
         system("cls");
         cout << "\n====== MAIN MENU ======\n";
         cout << "1. Tambah Kontak\n";
-        cout << "2. Lihat Daftar\n";
+        cout << "2. Lihat Daftar Kontak\n";
         cout << "3. Cari Kontak\n";
-        cout << "4. Statistik & Filter\n";
+        cout << "4. Statistik & Filter Kontak\n";
         cout << "5. Keluar\n";
         cout << "Pilihan: "; cin >> pil;
-
+		
         switch (pil) {
             case 1:
                 system("cls");
@@ -180,9 +184,12 @@ int main() {
             case 2:
                 system("cls");
                 int s;
-                cout << "Urutkan Nama [ 1. ASC (A-Z) | 2. DESC (Z-A) ]: "; cin >> s;
-                urutkanData(s == 1);
-                tampilkanTabel();
+                do {
+					cout << "--- LIHAT DAFTAR KONTAK ---\n";
+					cout << "Urutkan Nama :\n1. ASC (A-Z)\n2. DESC (Z-A)\nPilih : "; cin >> s;
+				} while ( s != 1 && s != 2);
+					urutkanData(s == 1);
+					tampilkanTabel();
                 system("pause");
                 break;
             case 3:
@@ -208,4 +215,5 @@ int main() {
 
     cout << "\nProgram selesai. Sampai jumpa!\n";
     return 0;
-}
+} 
+
