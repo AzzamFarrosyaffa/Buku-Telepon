@@ -13,7 +13,7 @@ struct Kontak {
 };
 
 // Global Variables
-Kontak daftarKontak[100];
+Kontak daftarKontak[1000];
 int jumlahKontak = 0;
 const string database = "contact_database.txt";
 
@@ -162,6 +162,11 @@ void cariEditHapus() {
 	} while (ulang == "y");
 }
 
+void cinFail() { cin.clear();
+				 cin.ignore(1000, '\n');
+                 cout << "Input tidak valid. Silakan masukkan angka." << endl;
+}
+
 int main() {
     loadDatabase();
     int pil;
@@ -174,6 +179,7 @@ int main() {
         cout << "4. Statistik & Filter Kontak\n";
         cout << "5. Keluar\n";
         cout << "Pilihan: "; cin >> pil;
+        if (cin.fail()) cinFail();
 		
         switch (pil) {
             case 1:
@@ -216,4 +222,3 @@ int main() {
     cout << "\nProgram selesai. Sampai jumpa!\n";
     return 0;
 } 
-
