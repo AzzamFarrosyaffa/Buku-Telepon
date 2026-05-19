@@ -97,21 +97,21 @@ void tambahKontak() {
 }
 
 void tampilkanTabel(int filterKategori = 0) {
-    cout << "\n" << setfill('=') << setw(70) << "=" << endl;
-    cout << setfill(' ') << setw(5) << "No" << setw(20) << "Nama" 
-         << setw(20) << "Nomor HP" << setw(20) << "Kategori" << endl;
-    cout << setfill('=') << setw(70) << "=" << setfill(' ') << endl;
+    cout << "\n" << setfill('=') << setw(66) << "=" << endl;
+    cout << setfill(' ') << setw(5) << "No" << setw(11) << "Nama" 
+         << setw(27) << "Nomor HP" << setw(20) << "Kategori" << endl;
+    cout << setfill('=') << setw(66) << "=" << setfill(' ') << endl;
 
     int counter = 1;
     for (int i = 0; i < jumlahKontak; i++) {
         if (filterKategori == 0 || daftarKontak[i].kategori == filterKategori) {
-            cout << setw(5) << counter++ 
-                 << setw(20) << daftarKontak[i].nama 
-                 << setw(20) << daftarKontak[i].noTelepon 
-                 << setw(20) << getNamaKategori(daftarKontak[i].kategori) << endl;
+            cout << "   " << left << setw(5) << counter++ 
+                 << left << setw(25) << daftarKontak[i].nama 
+                 << left << setw(15) << daftarKontak[i].noTelepon 
+                 << right << setw(15) << getNamaKategori(daftarKontak[i].kategori) << endl;
         }
     }
-    cout << setfill('-') << setw(70) << "-" << endl;
+    cout << setfill('-') << setw(66) << "-" << endl;
 }
 
 void cariEditHapus() {
