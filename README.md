@@ -19,15 +19,15 @@ Program ini mengintegrasikan 7 materi utama pemrograman C++:
 
 1.  **Clone / Unduh Repository**: Unduh file `.cpp` ke dalam komputer kamu.
 2.  **Siapkan Database Dummy (Opsional)**: 
-    * Buat sebuah file bernama `bukutelepon.txt` di dalam folder yang sama dengan file program.
+    * Buat sebuah file bernama `contact_database.txt` di dalam folder yang sama dengan file program.
     * Kamu bisa mengisi file tersebut dengan dummy data (Nama di baris ganjil, Nomor di baris genap).
 3.  **Kompilasi Program**: Gunakan compiler C++ (seperti g++ atau MinGW) untuk mengkompilasi *source code*.
     ```bash
-    g++ bukutelepon.cpp -o bukutelepon
+    g++ project_algo_prak.cpp -o project_algo_prak
     ```
 4.  **Jalankan Aplikasi**: Buka terminal/CMD dan jalankan file yang telah dikompilasi.
     ```bash
-    ./bukutelepon
+    ./project_algo_prak
     ```
 
 ## 🛠️ Menu Tersedia
