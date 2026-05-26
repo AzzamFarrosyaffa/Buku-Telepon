@@ -33,9 +33,10 @@ Program ini mengintegrasikan 7 materi utama pemrograman C++:
 ## 🛠️ Menu Tersedia
 
 1.  **Tambah Kontak**: Masukkan nama dan nomor telepon baru.
-2.  **Tampilkan Semua Kontak**: Melihat seluruh database kontak yang sudah terurut abjad.
+2.  **Lihat Daftar Kontak**: Melihat seluruh database kontak yang sudah terurut abjad.
 3.  **Cari Kontak**: Masukkan nama spesifik (Case Sensitive) untuk mencari nomor teleponnya.
-4.  **Keluar**: Menutup aplikasi secara aman.
+4.  **Statistik & Filter Kontak**: Melihat statistik kontak per kategori dan filter kontak per kategori.
+5.  **Keluar**: Menutup aplikasi secara aman.
 
 ---
 *Dibuat untuk keperluan pembelajaran struktur data dan algoritma dasar C++.*
