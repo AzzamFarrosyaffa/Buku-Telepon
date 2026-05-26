@@ -13,7 +13,7 @@ Program ini mengintegrasikan 7 materi utama pemrograman C++:
 * **Sorting (Bubble Sort)**: Daftar kontak tidak akan pernah berantakan! Setiap kali kontak baru ditambahkan, algoritma *Bubble Sort* akan mengurutkan seluruh data secara alfabetis (A-Z) secara *real-time*.
 * **Searching (Binary Search)**: Mencari satu nama dari ratusan kontak terasa instan. Program menggunakan algoritma *Binary Search* dengan kompleksitas waktu $O(\log n)$ yang jauh lebih cepat dari pencarian biasa.
 * **Fungsi Rekursif**: Implementasi *Binary Search* dibangun menggunakan metode Rekursif, di mana fungsi akan memanggil dirinya sendiri untuk membelah rentang pencarian hingga kontak ditemukan.
-* **File Handling (I/O)**: Data bersifat persisten! Semua kontak disimpan ke dalam file eksternal (`bukutelepon.txt`). Data akan otomatis dimuat ulang (*load*) saat program dibuka, dan disimpan (*save*) saat ada pembaruan.
+* **File Handling (I/O)**: Data bersifat persisten! Semua kontak disimpan ke dalam file eksternal (`contact_database.txt`). Data akan otomatis dimuat ulang (*load*) saat program dibuka, dan disimpan (*save*) saat ada pembaruan.
 
 ## 🚀 Cara Menjalankan Program
 
