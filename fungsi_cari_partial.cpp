@@ -1,3 +1,5 @@
+// ganti fungsi void cariEditHapus() di kode project_algo_prak.cpp agar bisa mencari partial. contoh "Az" menampilkan "Azzam, Azriel, Az..."
+
 void cariEditHapus() {
     string cari;
     string ulang;
