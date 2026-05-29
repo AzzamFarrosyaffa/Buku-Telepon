@@ -62,14 +62,14 @@ void cariEditHapus() {
                     cout << "Nama Baru   : "; getline(cin >> ws, pointerEdit->nama);
                     cout << "No HP Baru  : "; cin >> pointerEdit->noTelepon;
                     cout << "Kategori Baru (1:Keluarga, 2:Saudara, 3:Teman, 4:Tetangga) : "; cin >> pointerEdit->kategori;
-                    storeDatabase();
+                    overwriteDatabase();
                     cout << "\n>> Data diperbarui!\n";
                 } else if (action == 2) {
                     for (int i = indexKetemu; i < jumlahKontak - 1; i++) {
                         daftarKontak[i] = daftarKontak[i+1];
                     }
                     jumlahKontak--;
-                    storeDatabase();
+                    overwriteDatabase();
                     cout << "\n>> Data dihapus!\n";
                 }
             }
