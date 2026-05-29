@@ -6,38 +6,19 @@
 
 using namespace std;
 
-// STRUCT
 struct Kontak {
     string nama;
     string noTelepon;
     int kategori;
 };
 
-// GLOBAL VARIABLE
+// variabel global
 Kontak daftarKontak[1000];
 int jumlahKontak = 0;
 const int MAX_KONTAK = 1000;
 const string database = "contact_database.txt";
 
-// PROTOTYPE FUNCTION
-string getNamaKategori(int k);
-void tukarKontak(Kontak* a, Kontak* b);
-bool nomorSudahAda(string noHP);
-bool nomorValid(string noHP);
-void cinFail();
-void appendDatabase();
-void overwriteDatabase();
-void loadDatabase();
-int hitungPerKategori(int index, int target);
-int partition(int low, int high, bool asc);
-void quickSort(int low, int high, bool asc);
-int binarySearch(string target);
-void tambahKontak();
-void tampilkanTabel(int filterKategori = 0);
-void cariEditHapus();
-void menuStatistik();
-
-// HELPER FUNCTION
+// fungsi mendapatkan kategori dari angka
 string getNamaKategori(int k) {
     if (k == 1) return "Keluarga";
     if (k == 2) return "Saudara";
@@ -46,13 +27,14 @@ string getNamaKategori(int k) {
     return "Lainnya";
 }
 
+// fungsi swap kontak
 void tukarKontak(Kontak* a, Kontak* b) {
     Kontak temp = *a;
     *a = *b;
     *b = temp;
 }
 
-// mengecek apakah nomor ganda?
+// fungsi mengecek apakah nomor ganda?
 bool nomorSudahAda(string noHP) {
     for (int i = 0; i < jumlahKontak; i++) {
         if (daftarKontak[i].noTelepon == noHP) {
@@ -62,7 +44,7 @@ bool nomorSudahAda(string noHP) {
     return false;
 }
 
-// mengecek apakah nomor hanya terdiri dari angka
+// fungsi mengecek apakah nomor hanya terdiri dari angka
 bool nomorValid(string noHP) {
     for (size_t i = 0; i < noHP.length(); i++) {
         if (!isdigit(noHP[i])) {
@@ -72,13 +54,14 @@ bool nomorValid(string noHP) {
     return true;
 }
 
+// fungsi error handling int fail
 void cinFail() {
     cin.clear();
     cin.ignore(1000, '\n');
     cout << "Input tidak valid!\n";
 }
 
-// menambahkan 1 data kontak baru ke file tanpa menghapus isi lama file
+// fungsi menambahkan 1 data kontak baru ke file tanpa menghapus isi lama file
 void appendDatabase() {
     ofstream file(database, ios::app);
     if (!file.is_open()) {
@@ -94,7 +77,7 @@ void appendDatabase() {
     file.close();
 }
 
-// menulis ulang seluruh data kontak ke file (saat edit dan hapus)
+// fungsi menulis ulang seluruh data kontak ke file (saat edit dan hapus)
 void overwriteDatabase() {
     ofstream file(database, ios::trunc);
     if (!file.is_open()) {
@@ -109,7 +92,7 @@ void overwriteDatabase() {
     file.close();
 }
 
-//membaca data dari file lalu memasukkannya ke dalam array daftarKontak.
+// fungsi membaca data dari file lalu memasukkannya ke dalam array daftarKontak.
 void loadDatabase() {
     ifstream file(database);
     if (!file.is_open()) {
@@ -133,7 +116,7 @@ void loadDatabase() {
     file.close();
 }
 
-// REKURSI menghitung kategori
+// fungsi REKURSI untuk menghitung kategori
 int hitungPerKategori(int index, int target) {
     if (index >= jumlahKontak) {
         return 0;
@@ -142,7 +125,7 @@ int hitungPerKategori(int index, int target) {
     return point + hitungPerKategori(index + 1, target);
 }
 
-// QUICK SORT
+// fungsi QUICK SORT
 int partition(int low, int high, bool asc) {
     string pivot = daftarKontak[high].nama;
     int i = low - 1;
@@ -170,7 +153,7 @@ void quickSort(int low, int high, bool asc) {
     }
 }
 
-// BINARY SEARCH
+// fugsi BINARY SEARCH
 int binarySearch(string target) {
     int left = 0;
     int right = jumlahKontak - 1;
@@ -189,7 +172,7 @@ int binarySearch(string target) {
     return -1;
 }
 
-// TAMBAH KONTAK
+// menu TAMBAH KONTAK
 void tambahKontak() {
     if (jumlahKontak >= MAX_KONTAK) {
         cout << "Database penuh!\n";
@@ -224,8 +207,8 @@ void tambahKontak() {
     cout << ">> Kontak berhasil ditambahkan!\n";
 }
 
-// TAMPILKAN TABEL
-void tampilkanTabel(int filterKategori) {
+// menu TAMPILKAN TABEL
+void tampilkanTabel(int filterKategori = 0) {
     cout << "\n"
          << setfill('=')
          << setw(70)
@@ -266,7 +249,7 @@ void tampilkanTabel(int filterKategori) {
          << endl;
 }
 
-// CARI / EDIT / HAPUS
+// menu CARI / EDIT / HAPUS
 void cariEditHapus() {
     string cari;
     quickSort(0, jumlahKontak - 1, true);
@@ -338,7 +321,7 @@ void cariEditHapus() {
     }
 }
 
-// MENU STATISTIK
+// menu STATISTIK
 void menuStatistik() {
     system("cls");
     cout << "\n=== STATISTIK ===\n";
